@@ -22,7 +22,7 @@
               <input type="password" class="form-control" id="password" name="password" required>
           </div>
           <div class="text-center">
-              <button type="submit" class="btn btn-info" id="submit-button" value="Submit">Login</button>
+              <button name="loginsubmit" type="submit" class="btn btn-info" id="submit-button" value="Submit">Login</button>
           </div>
           <div>
               <label>Not a member yet? <a href="signup.jsp">Sign up!</a></label>
