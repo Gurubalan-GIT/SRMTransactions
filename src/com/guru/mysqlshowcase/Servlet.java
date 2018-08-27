@@ -10,8 +10,7 @@ public class Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         if(req.getParameter("button")!=null){
-            DAOImpl dao=new DAOImpl();
-            dao.CreateTable();
+
         }
     }
 }
