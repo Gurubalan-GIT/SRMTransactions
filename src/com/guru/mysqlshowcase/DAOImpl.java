@@ -1,15 +1,11 @@
 package com.guru.mysqlshowcase;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 interface DAO{
     Boolean doLogin(Bean bean);
 }
 public class DAOImpl implements DAO{
     Connection connection=DBConnection.getConnection();
-    ResultSet resultSet;
     Boolean result;
     @Override
     public Boolean doLogin(Bean bean) {
@@ -19,8 +15,8 @@ public class DAOImpl implements DAO{
         else{
             try {
                 Statement statement=connection.createStatement();
-                String query="select * from sqlshowcasedb.users where Email='"+bean.getEmail()+"' and pwd='"+bean.getPassword()+"';";
-                resultSet=statement.executeQuery(query);
+                String query="select * from users where Email='"+bean.getEmail()+"' and pwd='"+bean.getPassword()+"';";
+                ResultSet resultSet=statement.executeQuery(query);
                 result=resultSet.next();
             } catch (SQLException e) {
                 e.printStackTrace();
