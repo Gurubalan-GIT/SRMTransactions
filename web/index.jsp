@@ -7,9 +7,13 @@
 <html>
   <head>
     <title>MySQL Showcase</title>
+    <!--  Bootstrap CSS  -->
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   </head>
   <body>
   <form action="Servlet" method="post">
-      <input type="submit" name="button" value="Click here to create a table" />  </form>
+      <input type="submit" name="button" value="Click here to create a table" class="badge-danger"/>
+  </form>
+  <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
