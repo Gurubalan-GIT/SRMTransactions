@@ -12,7 +12,7 @@
   </head>
   <body>
   <div class="container">
-      <form action="Servlet" method="post">
+      <form action="Profile" method="post">
           <div class="form-group">
               <label for="email">Email address</label>
               <input type="email" class="form-control" id="email" name="email" required>

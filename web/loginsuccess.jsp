@@ -1,16 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Gurubalan
-  Date: 28-08-2018
-  Time: 00:59
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.guru.mysqlshowcase.Bean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Logged in!</title>
 </head>
 <body>
-Hello!
+Hello! Your email ID is: <%  Bean bean=(Bean)session.getAttribute("bean"); %> <%= bean.getEmail() %>
 </body>
 </html>
