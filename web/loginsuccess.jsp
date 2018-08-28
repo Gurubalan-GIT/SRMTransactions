@@ -1,4 +1,4 @@
-<%@ page import="com.guru.mysqlshowcase.login.Bean" %>
+<%@ page import="com.guru.mysqlshowcase.LoginDTO.Bean" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

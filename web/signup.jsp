@@ -42,7 +42,7 @@
             <button name="regsubmit" type="submit" class="btn btn-info" id="submit-button" value="Submit">Sign Up</button>
         </div>
         <div>
-            <label>Already a member? <a href="index.jsp">Sign up!</a></label>
+            <label>Already a member? <a href="index.jsp">Login</a></label>
         </div>
     </form>
 </div><!-- Bootstrap JS -->

@@ -1,6 +1,8 @@
 package com.guru.mysqlshowcase;
 
-import com.guru.mysqlshowcase.login.Bean;
+import com.guru.mysqlshowcase.LoginDTO.Bean;
+import com.guru.mysqlshowcase.Service.ServiceImpl;
+import com.guru.mysqlshowcase.RegisterDTO.RegisterBean;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,6 +42,20 @@ public class Servlet extends HttpServlet {
             String name=req.getParameter("name");
             int age=Integer.parseInt(req.getParameter("age"));
             String gender=req.getParameter("gender");
+            RegisterBean registerBean=new RegisterBean();
+            registerBean.setEmail(Email);
+            registerBean.setPassword(Password);
+            registerBean.setName(name);
+            registerBean.setAge(age);
+            registerBean.setGender(gender);
+            ServiceImpl registerService = new ServiceImpl();
+            int result=registerService.doRegisterService(registerBean);
+            if(result==0){
+                printWriter.print("Success");
+            }
+            else{
+                printWriter.print("Failure!");
+            }
         }
     }
 }

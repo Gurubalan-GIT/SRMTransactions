@@ -1,4 +1,4 @@
-package com.guru.mysqlshowcase.login;
+package com.guru.mysqlshowcase.LoginDTO;
 
 public class Bean {
     String email;

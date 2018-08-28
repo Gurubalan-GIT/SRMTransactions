@@ -1,4 +1,4 @@
-package com.guru.mysqlshowcase;
+package com.guru.mysqlshowcase.DBConnect;
 
 import java.sql.Connection;
 import java.sql.Driver;
