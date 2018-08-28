@@ -1,4 +1,6 @@
 package com.guru.mysqlshowcase;
+import com.guru.mysqlshowcase.login.Bean;
+
 import java.sql.*;
 
 interface DAO{
@@ -22,8 +24,8 @@ public class DAOImpl implements DAO{
                     ps = connection.prepareStatement(query);
                     ps.setString(1, Email);
                     ps.setString(2, Password);
-                    ResultSet rs = ps.executeQuery();
-                    result=rs.next();
+                    ResultSet resultSet = ps.executeQuery();
+                    result=resultSet.next();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

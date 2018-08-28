@@ -1,8 +1,11 @@
 package com.guru.mysqlshowcase;
-interface LoginService{
+
+import com.guru.mysqlshowcase.login.Bean;
+
+interface Service {
 Boolean doLoginService(Bean bean);
 }
-public class LoginServiceImpl implements LoginService {
+public class ServiceImpl implements Service {
     @Override
     public Boolean doLoginService(Bean bean) {
         DAOImpl dao=new DAOImpl();

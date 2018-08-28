@@ -1,5 +1,7 @@
 package com.guru.mysqlshowcase;
 
+import com.guru.mysqlshowcase.login.Bean;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +22,7 @@ public class Servlet extends HttpServlet {
             Bean bean=new Bean();
             bean.setEmail(Email);
             bean.setPassword(Password);
-            LoginServiceImpl loginService = new LoginServiceImpl();
+            ServiceImpl loginService = new ServiceImpl();
             Boolean result=loginService.doLoginService(bean);
             if(result){
                 HttpSession httpSession=req.getSession(true);
@@ -32,8 +34,12 @@ public class Servlet extends HttpServlet {
                 printWriter.print("<script type=\"text/javascript\">alert('You are not a registered user. Please Sign up!'); window.location.href='/signup.jsp'; </script>");
             }
         }
-        else {
-            printWriter.print("<html> <body> Error 404 </body </html>");
+        else if(req.getParameter("regsubmit")!=null){
+            String Email=req.getParameter("email");
+            String Password=req.getParameter("password");
+            String name=req.getParameter("name");
+            int age=Integer.parseInt(req.getParameter("age"));
+            String gender=req.getParameter("gender");
         }
     }
 }
