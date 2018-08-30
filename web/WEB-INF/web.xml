@@ -5,10 +5,18 @@
          version="4.0">
     <servlet>
         <servlet-name>Profile</servlet-name>
-        <servlet-class>com.guru.mysqlshowcase.Servlets.Servlet</servlet-class>
+        <servlet-class>com.guru.mysqlshowcase.Servlets.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Profile</servlet-name>
         <url-pattern>/Profile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>com.guru.mysqlshowcase.Servlets.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
     </servlet-mapping>
 </web-app>
