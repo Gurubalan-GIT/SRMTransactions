@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <h3>The Tables</h3><br>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover table-responsive-sm">
         <thead>
             <tr>
                 <th>Email</th>
