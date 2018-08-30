@@ -3,12 +3,10 @@ package com.guru.mysqlshowcase.Servlets;
 import com.guru.mysqlshowcase.DTO.RegisterDTO.RegisterBean;
 import com.guru.mysqlshowcase.Service.ServiceImpl;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -16,7 +14,6 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         PrintWriter printWriter=res.getWriter();
-        RequestDispatcher requestDispatcher;
         if(req.getParameter("regsubmit")!=null){
             String Email=req.getParameter("email");
             String Password=req.getParameter("password");
@@ -32,9 +29,8 @@ public class RegisterServlet extends HttpServlet {
             ServiceImpl registerService = new ServiceImpl();
             RegisterBean result=registerService.doRegisterService(registerBean);
             if(result.getIsValid()==0){
-                HttpSession httpSession=req.getSession(true);
-                httpSession.setAttribute("registerBean",registerBean);
-                res.sendRedirect("registersuccess.jsp");
+                res.setContentType("text/html");
+                printWriter.print("<script type=\"text/javascript\">alert('You have been successfully registered. Try logging in!'); window.location.href='/index.jsp'; </script>");
             }
             else{
                 printWriter.print("Failure!");

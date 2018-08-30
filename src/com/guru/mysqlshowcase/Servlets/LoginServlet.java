@@ -26,10 +26,16 @@ public class LoginServlet extends HttpServlet {
             ServiceImpl loginService = new ServiceImpl();
             Bean result=loginService.doLoginService(bean);
             if(result.getValid()){
-                HttpSession httpSession=req.getSession(true);
-                httpSession.setAttribute("bean",bean);
-                requestDispatcher=req.getRequestDispatcher("/loginsuccess.jsp");
-                requestDispatcher.forward(req,res);
+                if(result.getAdmin()){
+                    printWriter.print("Admin!");
+                }
+                else{
+                    HttpSession httpSession=req.getSession(true);
+                    httpSession.setAttribute("bean",bean);
+                    requestDispatcher=req.getRequestDispatcher("/loginsuccess.jsp");
+                    requestDispatcher.forward(req,res);
+                }
+
             }
             else{
                 res.setContentType("text/html");
