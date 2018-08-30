@@ -10,19 +10,44 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body>
-<%
-    Connection connection= DBConnection.getConnection();
-    String query="select * from users;";
-    try {
-        PreparedStatement preparedStatement=connection.prepareStatement(query);
-        ResultSet resultSet=preparedStatement.executeQuery();
-        while (resultSet.next()){
-
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-%>
+<div class="container">
+    <h3>The Tables</h3><br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Permission</th>
+            </tr>
+        </thead>
+        <tbody>
+        <%
+            Connection connection= DBConnection.getConnection();
+            String query="select * from users;";
+            try {
+                PreparedStatement preparedStatement=connection.prepareStatement(query);
+                ResultSet resultSet=preparedStatement.executeQuery();
+                while (resultSet.next())
+                {%>
+                    <tr>
+                        <td><%=resultSet.getString("Email")%></td>
+                        <td><%=resultSet.getString("pwd")%></td>
+                        <td><%=resultSet.getString("name")%></td>
+                        <td><%=resultSet.getString("age")%></td>
+                        <td><%=resultSet.getString("gender")%></td>
+                        <td><%=resultSet.getString("usertype")%></td
+                    </tr>
+               <%}
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        %>
+        </tbody>
+    </table>
+</div>
 <script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>

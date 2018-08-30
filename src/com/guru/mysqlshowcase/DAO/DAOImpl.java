@@ -20,17 +20,24 @@ public class DAOImpl implements DAO{
             System.out.print("Error 404");
         }
         else {
-                String query1 = "select * from users where Email=? and pwd=?;";
-                String query2="select Email,pwd,usertype from users;";
+                String query1 = "select * from users where Email='"+Email+"' and pwd='"+Password+"';";
+                String query2="select Email,pwd,usertype from users where Email='"+Email+"' and pwd='"+Password+"' and usertype='admin';";
                 try {
                     PreparedStatement ps;
                     ps = connection.prepareStatement(query1);
-                    ps.setString(1, Email);
-                    ps.setString(2, Password);
                     ResultSet resultSet = ps.executeQuery();
                     if(resultSet.next()){
                         bean.setValid(true);
                         PreparedStatement ps1;
+                        ps1=connection.prepareStatement(query2);
+                        ResultSet resultSet1=ps1.executeQuery();
+                        if(resultSet1.next()){
+                            bean.setAdmin(true);
+                        }
+                        else{
+                            bean.setAdmin(false);
+                        }
+                       /* PreparedStatement ps1;
                         ps1=connection.prepareStatement(query2);
                         ResultSet resultSet1=ps1.executeQuery();
                         while(resultSet1.next()){
@@ -43,12 +50,11 @@ public class DAOImpl implements DAO{
                                     break;
                                 }
                                 else{
-                                    System.out.print(Ctype);
                                     bean.setAdmin(false);
                                     break;
                                 }
                             }
-                        }
+                        }*/
                     }
                     else{
                         bean.setValid(false);
