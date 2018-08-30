@@ -39,7 +39,6 @@ public class DAOImpl implements DAO{
                             if(Cemail.equals(Email)&&Cpass.equals(Password)){
                                 String Ctype=resultSet1.getString("usertype");
                                 if(Ctype.equals("admin")){
-                                    System.out.print(Ctype);
                                     bean.setAdmin(true);
                                     break;
                                 }
@@ -62,19 +61,31 @@ public class DAOImpl implements DAO{
     }
     @Override
     public RegisterBean doRegister(RegisterBean registerBean) {
+        String Email=registerBean.getEmail();
         if(connection==null){
             System.out.print("Error 404");
         }else {
-            String query="insert into users (Email, pwd, name, age, gender,usertype) VALUES ('"+registerBean.getEmail()+"','"+registerBean.getPassword()+"','"+registerBean.getName()+"','"+registerBean.getAge()+"','"+registerBean.getGender()+"','user');";
-            PreparedStatement ps = null;
+            String query1="select Email from users where Email='"+Email+"';";
+            String query2="insert into users (Email, pwd, name, age, gender,usertype) VALUES ('"+registerBean.getEmail()+"','"+registerBean.getPassword()+"','"+registerBean.getName()+"','"+registerBean.getAge()+"','"+registerBean.getGender()+"','user');";
             try {
-                ps = connection.prepareStatement(query);
-                registerResult=ps.executeUpdate();
-                if(registerResult>0){
-                    registerBean.setIsValid(0);
+                PreparedStatement ps;
+                ps = connection.prepareStatement(query1);
+                ResultSet resultSet=ps.executeQuery();
+                if(resultSet.next()){
+                    registerBean.setResultSetValid(true);
+                    registerBean.setEmailExits(0);
                 }
-                else {
-                    registerBean.setIsValid(1);
+                else{
+                    registerBean.setResultSetValid(false);
+                    registerBean.setEmailExits(1);
+                    PreparedStatement ps2=connection.prepareStatement(query2);
+                    registerResult=ps2.executeUpdate();
+                    if(registerResult>0){
+                        registerBean.setIsValid(0);
+                    }
+                    else {
+                        registerBean.setIsValid(1);
+                    }
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

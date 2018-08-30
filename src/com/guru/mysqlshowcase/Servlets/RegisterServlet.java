@@ -28,12 +28,23 @@ public class RegisterServlet extends HttpServlet {
             registerBean.setGender(gender);
             ServiceImpl registerService = new ServiceImpl();
             RegisterBean result=registerService.doRegisterService(registerBean);
-            if(result.getIsValid()==0){
-                res.setContentType("text/html");
-                printWriter.print("<script type=\"text/javascript\">alert('You have been successfully registered. Try logging in!'); window.location.href='/index.jsp'; </script>");
+            if(result.getResultSetValid()){
+                if(registerBean.isEmailExits()==0){
+                    printWriter.print("<script type=\"text/javascript\">alert('Email already taken, Try again!'); window.location.href='/signup.jsp'; </script>");
+                    System.out.print(registerBean.isEmailExits());
+                }
+                else{
+                    printWriter.print("Error 405");
+                }
             }
             else{
-                printWriter.print("Failure!");
+                if(result.getIsValid()==0){
+                    res.setContentType("text/html");
+                    printWriter.print("<script type=\"text/javascript\">alert('You have been successfully registered. Try logging in!'); window.location.href='/index.jsp'; </script>");
+                }
+                else{
+                    printWriter.print("Error 404");
+                }
             }
         }
     }

@@ -7,7 +7,21 @@ public class RegisterBean {
     int age;
     String gender;
     int isValid;
+    int isEmailExits;
+    Boolean resultSetValid;
 
+    public Boolean getResultSetValid() {
+        return resultSetValid;
+    }
+    public void setResultSetValid(Boolean resultSetValid) {
+        this.resultSetValid = resultSetValid;
+    }
+    public int isEmailExits() {
+        return isEmailExits;
+    }
+    public void setEmailExits(int emailExits) {
+        isEmailExits = emailExits;
+    }
     public int getIsValid() {
         return isValid;
     }
