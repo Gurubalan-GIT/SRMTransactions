@@ -1,6 +1,7 @@
 package com.guru.mysqlshowcase.Servlets;
 
 import com.guru.mysqlshowcase.DTO.LoginDTO.Bean;
+import com.guru.mysqlshowcase.DTO.RegisterDTO.RegisterBean;
 import com.guru.mysqlshowcase.Service.ServiceImpl;
 
 import javax.servlet.RequestDispatcher;
@@ -27,7 +28,10 @@ public class LoginServlet extends HttpServlet {
             Bean result=loginService.doLoginService(bean);
             if(result.getValid()){
                 if(result.getAdmin()){
-                    printWriter.print("Admin!");
+                    HttpSession httpSession=req.getSession(true);
+                    httpSession.setAttribute("bean", bean);
+                    requestDispatcher=req.getRequestDispatcher("/admin.jsp");
+                    requestDispatcher.forward(req,res);
                 }
                 else{
                     HttpSession httpSession=req.getSession(true);
