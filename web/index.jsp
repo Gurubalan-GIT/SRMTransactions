@@ -25,7 +25,7 @@
               <button name="loginsubmit" type="submit" class="btn btn-info" id="submit-button" value="Submit">Login</button>
           </div>
           <div>
-              <label>Not a member yet? <a href="signup.jsp">Sign up!</a></label>
+              <label>Not a member yet? <a href="/signup.jsp">Sign up!</a></label>
           </div>
       </form>
   </div>
