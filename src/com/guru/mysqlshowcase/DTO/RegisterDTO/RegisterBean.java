@@ -1,4 +1,4 @@
-package com.guru.mysqlshowcase.RegisterDTO;
+package com.guru.mysqlshowcase.DTO.RegisterDTO;
 
 public class RegisterBean {
     String email;
@@ -6,7 +6,14 @@ public class RegisterBean {
     String name;
     int age;
     String gender;
+    int isValid;
 
+    public int getIsValid() {
+        return isValid;
+    }
+    public void setIsValid(int isValid) {
+        this.isValid = isValid;
+    }
     public String getEmail() {
         return email;
     }

@@ -1,8 +1,8 @@
-package com.guru.mysqlshowcase;
+package com.guru.mysqlshowcase.Servlets;
 
-import com.guru.mysqlshowcase.LoginDTO.Bean;
+import com.guru.mysqlshowcase.DTO.LoginDTO.Bean;
 import com.guru.mysqlshowcase.Service.ServiceImpl;
-import com.guru.mysqlshowcase.RegisterDTO.RegisterBean;
+import com.guru.mysqlshowcase.DTO.RegisterDTO.RegisterBean;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +17,6 @@ public class Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         PrintWriter printWriter=res.getWriter();
-        RequestDispatcher requestDispatcher;
         if(req.getParameter("loginsubmit")!=null){
             String Email=req.getParameter("email");
             String Password=req.getParameter("password");
@@ -25,8 +24,8 @@ public class Servlet extends HttpServlet {
             bean.setEmail(Email);
             bean.setPassword(Password);
             ServiceImpl loginService = new ServiceImpl();
-            Boolean result=loginService.doLoginService(bean);
-            if(result){
+            Bean result=loginService.doLoginService(bean);
+            if(result.getValid()){
                 HttpSession httpSession=req.getSession(true);
                 httpSession.setAttribute("bean",bean);
                 res.sendRedirect("loginsuccess.jsp");
@@ -49,8 +48,8 @@ public class Servlet extends HttpServlet {
             registerBean.setAge(age);
             registerBean.setGender(gender);
             ServiceImpl registerService = new ServiceImpl();
-            int result=registerService.doRegisterService(registerBean);
-            if(result==0){
+            RegisterBean result=registerService.doRegisterService(registerBean);
+            if(result.getIsValid()==0){
                 printWriter.print("Success");
             }
             else{

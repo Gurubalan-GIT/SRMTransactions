@@ -1,20 +1,20 @@
 package com.guru.mysqlshowcase.DAO;
 import com.guru.mysqlshowcase.DBConnect.DBConnection;
-import com.guru.mysqlshowcase.LoginDTO.Bean;
-import com.guru.mysqlshowcase.RegisterDTO.RegisterBean;
+import com.guru.mysqlshowcase.DTO.LoginDTO.Bean;
+import com.guru.mysqlshowcase.DTO.RegisterDTO.RegisterBean;
 
 import java.sql.*;
 
 interface DAO{
-    Boolean doLogin(Bean bean);
-    int doRegister(RegisterBean registerBean);
+    Bean doLogin(Bean bean);
+    RegisterBean doRegister(RegisterBean registerBean);
 }
 public class DAOImpl implements DAO{
     Connection connection= DBConnection.getConnection();
-    Boolean result;
+    //Boolean result;
     int registerResult;
     @Override
-    public Boolean doLogin(Bean bean) {
+    public Bean doLogin(Bean bean) {
         String Email=bean.getEmail();
         String Password=bean.getPassword();
         if(connection==null){
@@ -28,21 +28,20 @@ public class DAOImpl implements DAO{
                     ps.setString(1, Email);
                     ps.setString(2, Password);
                     ResultSet resultSet = ps.executeQuery();
-                    result=resultSet.next();
+                    if(resultSet.next()){
+                        bean.setValid(true);
+                    }
+                    else{
+                        bean.setValid(false);
+                    }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
         }
-        if(result){
-            return true;
-        }
-        else{
-            return false;
-        }
+       return bean;
     }
-
     @Override
-    public int doRegister(RegisterBean registerBean) {
+    public RegisterBean doRegister(RegisterBean registerBean) {
         if(connection==null){
             System.out.print("Error 404");
         }else {
@@ -51,15 +50,16 @@ public class DAOImpl implements DAO{
             try {
                 ps = connection.prepareStatement(query);
                 registerResult=ps.executeUpdate();
+                if(registerResult>0){
+                    registerBean.setIsValid(0);
+                }
+                else {
+                    registerBean.setIsValid(1);
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        if(registerResult>0){
-            return 0;
-        }
-        else {
-            return 1;
-        }
+        return registerBean;
     }
 }
