@@ -1,2 +1,2 @@
-## MySQL-Showcase
-Web Application showcasing all MySQL Funtions.
+## BMS-Web application
+This is a web appliocation for bank account management system!
