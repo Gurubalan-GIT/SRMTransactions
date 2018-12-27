@@ -1,9 +1,7 @@
 package com.guru.mysqlshowcase.Servlets;
 
 import com.guru.mysqlshowcase.DTO.LoginDTO.Bean;
-import com.guru.mysqlshowcase.DTO.RegisterDTO.RegisterBean;
 import com.guru.mysqlshowcase.Service.ServiceImpl;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

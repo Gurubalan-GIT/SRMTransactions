@@ -11,7 +11,7 @@ public class DBConnection {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             try{
-                connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/sqlshowcasedb","root","");
+                connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/BMSDB","root","");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

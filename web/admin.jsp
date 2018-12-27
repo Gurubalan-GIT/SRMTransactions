@@ -13,10 +13,6 @@
 </head>
 <body>
 <input type="button" onclick="location.href='/users.jsp';" value="User-Table (Root)" class="btn-success" style="border-radius: 8px;"/>
-<input type="button" onclick="location.href='/users.jsp';" value="Students-Table" class="btn-primary" style="border-radius: 8px;"/>
-<input type="button" onclick="location.href='/users.jsp';" value="Course-Table (Related with Students)" class="btn-danger" style="border-radius: 8px;"/>
-<input type="button" onclick="location.href='/users.jsp';" value="Bank-Table" class="btn-secondary" style="border-radius: 8px;"/>
-<input type="button" onclick="location.href='/users.jsp';" value="Account Table (Related with Bank-Table)" class="btn-dark" style="border-radius: 8px;"/>
 <script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>

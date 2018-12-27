@@ -6,7 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>MySQL Showcase</title>
+    <title>SRM Transactions</title>
     <!--  Bootstrap CSS  -->
       <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   </head>

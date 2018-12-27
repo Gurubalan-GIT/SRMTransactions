@@ -2,7 +2,6 @@ package com.guru.mysqlshowcase.DAO;
 import com.guru.mysqlshowcase.DBConnect.DBConnection;
 import com.guru.mysqlshowcase.DTO.LoginDTO.Bean;
 import com.guru.mysqlshowcase.DTO.RegisterDTO.RegisterBean;
-
 import java.sql.*;
 
 interface DAO{
@@ -37,6 +36,8 @@ public class DAOImpl implements DAO{
                         else{
                             bean.setAdmin(false);
                         }
+                        //This is another method we can execute:-
+                        //Much more secured calls
                        /* PreparedStatement ps1;
                         ps1=connection.prepareStatement(query2);
                         ResultSet resultSet1=ps1.executeQuery();
